@@ -9,12 +9,14 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/common-nighthawk/go-figure"
 	"github.com/sanjeevnode/go-video-downloader/internal/downloader"
 	"github.com/sanjeevnode/go-video-downloader/internal/search"
 	"github.com/sanjeevnode/go-video-downloader/internal/utils"
 )
 
 func ShowMainMenu() {
+	printBanner()
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
@@ -38,7 +40,7 @@ func ShowMainMenu() {
 		case 2:
 			handleDownloadFromURL(reader)
 		case 3:
-			fmt.Println("Exiting...")
+			printEndBanner()
 			return
 		default:
 			fmt.Println("Please enter 1, 2, or 3.")
@@ -162,4 +164,17 @@ func ValidateYouTubeURL(videoURL string) error {
 	}
 
 	return nil
+}
+
+func printBanner() {
+	myFigure := figure.NewFigure("G V D", "", true)
+	myFigure.Print()
+	fmt.Println("Go Video Downloader")
+	fmt.Println("by github.com/sanjeevnode")
+}
+
+func printEndBanner() {
+	myFigure := figure.NewFigure("Bye!", "", true)
+	myFigure.Print()
+	fmt.Println("Visit at github.com/sanjeevnode/go-video-downloader")
 }
