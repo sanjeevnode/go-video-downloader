@@ -74,18 +74,10 @@ import (
 
 	"github.com/sanjeevnode/go-video-downloader/internal/config"
 	"github.com/sanjeevnode/go-video-downloader/internal/utils"
+	"github.com/sanjeevnode/go-video-downloader/internal/video"
 )
 
-type VideoItem struct {
-	Title       string
-	VideoID     string
-	PublishedAt string
-	Duration    string
-	ChannelName string
-	ViewCount   string
-}
-
-func SearchYouTube(query string, maxResults int) ([]VideoItem, error) {
+func SearchYouTube(query string, maxResults int) ([]video.Video, error) {
 	apiKey := config.GetAPIKey()
 	searchURL := "https://www.googleapis.com/youtube/v3/search"
 
@@ -192,10 +184,10 @@ func SearchYouTube(query string, maxResults int) ([]VideoItem, error) {
 		}
 	}
 
-	var results []VideoItem
+	var results []video.Video
 	for _, item := range searchData.Items {
 		details := videoDetailsMap[item.ID.VideoID]
-		results = append(results, VideoItem{
+		results = append(results, video.Video{
 			Title:       item.Snippet.Title,
 			VideoID:     item.ID.VideoID,
 			PublishedAt: item.Snippet.PublishedAt,

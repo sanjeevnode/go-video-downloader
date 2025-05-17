@@ -11,6 +11,7 @@ import (
 
 	"github.com/sanjeevnode/go-video-downloader/internal/downloader"
 	"github.com/sanjeevnode/go-video-downloader/internal/search"
+	"github.com/sanjeevnode/go-video-downloader/internal/utils"
 )
 
 func ShowMainMenu() {
@@ -56,9 +57,10 @@ func handleSearch(reader *bufio.Reader) {
 		return
 	}
 
-	for i, v := range videos {
-		fmt.Printf("%d. Title: %s ChannelName: %s Views: %s Duration: %s (Published: %s)\n", i+1, v.Title, v.ChannelName, v.ViewCount, v.Duration, v.PublishedAt)
-	}
+	// for i, v := range videos {
+	// 	fmt.Printf("%d. Title: %s ChannelName: %s Views: %s Duration: %s (Published: %s)\n", i+1, v.Title, v.ChannelName, v.ViewCount, v.Duration, v.PublishedAt)
+	// }
+	utils.PrintVideosTable(videos)
 
 	fmt.Println("Enter video number to download or 0 to return to main menu:")
 	choiceStr, _ := reader.ReadString('\n')
