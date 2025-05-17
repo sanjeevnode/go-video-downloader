@@ -35,6 +35,11 @@ func SearchYouTube(query string, maxResults int) ([]video.Video, error) {
 	if err != nil {
 		return nil, err
 	}
+	responseStatus := resp.StatusCode
+	if responseStatus != http.StatusOK {
+		panic(fmt.Sprintf("Fetch Status %d , Unable to fetch data : No Internet or Invalid Api Key", responseStatus))
+	}
+
 	// fmt.Println("Response Body (Search):", string(bodyBytes))
 
 	var searchData struct {
