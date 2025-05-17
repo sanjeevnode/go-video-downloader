@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"time"
 )
 
 //go:embed yt-dlp.exe ffmpeg.exe ffprobe.exe
@@ -34,7 +35,8 @@ func Download(url string, format int) error {
 		return fmt.Errorf("unable to get user home directory: %v", err)
 	}
 	downloadPath := filepath.Join(home, "Downloads")
-	outputTemplate := filepath.Join(downloadPath, "%(title).80s.%(ext)s")
+	timestamp := time.Now().Format("20060102_150405") // YYYYMMDD_HHMMSS format
+	outputTemplate := filepath.Join(downloadPath, fmt.Sprintf("%%(title).80s_%s.%%(ext)s", timestamp))
 
 	projectRoot, err := os.Getwd() // working dir, usually project root
 	if err != nil {
