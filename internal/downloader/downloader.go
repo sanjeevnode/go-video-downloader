@@ -36,9 +36,16 @@ func Download(url string, format int) error {
 	downloadPath := filepath.Join(home, "Downloads")
 	outputTemplate := filepath.Join(downloadPath, "%(title).80s.%(ext)s")
 
+	projectRoot, err := os.Getwd() // working dir, usually project root
+	if err != nil {
+		return fmt.Errorf("unable to get working directory: %v", err)
+	}
+	cookiesPath := filepath.Join(projectRoot, "cookies.txt")
+
 	args := []string{
 		url,
 		"--ffmpeg-location", tempDir,
+		"--cookies", cookiesPath,
 		"-o", outputTemplate,
 	}
 
