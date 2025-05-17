@@ -31,7 +31,7 @@ Create a `.env` file in the root folder:
 YOUTUBE_API_KEY=your_google_api_key_here
 ```
 
-You can get your API key from: https://console.developers.google.com/
+You can get your API key from: https://console.developers.google.com/ by enabling Youtube Data Api V3
 
 ### 3. Run the CLI
 
