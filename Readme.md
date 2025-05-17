@@ -8,15 +8,23 @@ A simple command-line tool to search and download YouTube videos using the YouTu
 - Download videos or audio using `yt-dlp`
 - Built with Go for speed and simplicity
 
+## Example
+
+Here is a screenshot :
+
+![Screenshot](example/image.png)
+
 ## 🚀 How to Use
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/sanjeevnode/go-video-downloader.git
 cd go-video-downloader
 ```
 
 ### 2. Add your YouTube API key
+
 Create a `.env` file in the root folder:
 
 ```ini
@@ -41,7 +49,7 @@ This will generate a Windows executable `gvd.exe` in the current directory.
 
 ## ✅ Requirements
 
-* Go 1.18+
+- Go 1.18+
 
 ## 🧑 Author
 
